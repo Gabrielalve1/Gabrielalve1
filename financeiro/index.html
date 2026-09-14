@@ -1,1 +1,167 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090d12"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Meu Dinheiro"><title>Meu Dinheiro</title><style>:root{--bg:#090d12;--card:#111820;--soft:#18212b;--line:#25313d;--text:#f7f9fc;--muted:#94a3b8;--ok:#2dd4bf;--blue:#60a5fa;--warn:#fbbf24;--bad:#fb7185}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:92px}.app{max-width:680px;margin:auto;padding:calc(16px + env(safe-area-inset-top)) 15px 28px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.top h1{font-size:24px;margin:2px 0}.tiny,.label{font-size:12px;color:var(--muted)}.month{padding:8px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#dbeafe}.panel{display:none}.panel.active{display:block}.hero,.card,.box{background:var(--card);border:1px solid var(--line);border-radius:21px}.hero{padding:20px;background:linear-gradient(145deg,#121b25,#0f1720)}.big{font-size:36px;font-weight:850;letter-spacing:-1.2px;margin:5px 0}.sub{font-size:14px;line-height:1.45;color:#cbd5e1}.ok{color:var(--ok)}.bad{color:var(--bad)}.blue{color:var(--blue)}.warn{color:var(--warn)}.sec{margin-top:18px}.sec h2{font-size:16px;margin:0 0 10px}.grid2{display:grid;grid-template-columns:1.2fr .8fr;gap:9px}.card{padding:15px}.num{font-size:25px;font-weight:850;margin-top:4px}.hint{font-size:12px;color:var(--muted);line-height:1.4;margin-top:5px}.advisor{padding:15px;border-radius:18px;background:#102330;border:1px solid #244154;font-size:14px;line-height:1.5}.advisor b{display:block;margin-bottom:4px}.rows{display:flex;flex-direction:column;gap:8px}.row{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border-radius:15px;background:var(--card);border:1px solid var(--line)}.row span{font-size:13px;color:var(--muted)}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}button{appearance:none;border:0;font:inherit;cursor:pointer}.q{min-height:72px;border-radius:17px;background:var(--soft);border:1px solid var(--line);color:white;font-weight:800}.q small{display:block;color:var(--muted);font-weight:500;margin-top:4px}.primary,.secondary{width:100%;padding:14px;border-radius:14px;font-weight:850}.primary{background:linear-gradient(135deg,#60a5fa,#2dd4bf);color:#071118}.secondary{background:var(--soft);border:1px solid var(--line);color:white}.form{padding:16px}.field{margin-bottom:12px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}input,select{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#0a1118;color:white;font-size:16px;outline:none}.bill{display:grid;grid-template-columns:1fr 110px 36px;gap:7px;margin-bottom:7px}.bill input{padding:10px;font-size:14px}.del{border-radius:11px;background:#28141a;color:#fecdd3;border:1px solid #5e2636}.notice{padding:13px;border:1px dashed var(--line);border-radius:14px;color:#cbd5e1;font-size:13px;line-height:1.45;background:#0d151e}.list{display:flex;flex-direction:column;gap:8px}.item{display:flex;justify-content:space-between;gap:10px;padding:13px;border:1px solid var(--line);border-radius:15px;background:var(--card)}.item b{display:block;font-size:14px}.item small{color:var(--muted)}.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));width:min(660px,calc(100% - 18px));display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:7px;border-radius:19px;border:1px solid var(--line);background:rgba(13,18,25,.95);backdrop-filter:blur(18px)}.tab{padding:11px;border-radius:13px;background:transparent;color:var(--muted);font-size:12px;font-weight:800}.tab.active{background:#1a2633;color:white}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);align-items:flex-end;justify-content:center;z-index:30}.modal.open{display:flex}.sheet{width:min(680px,100%);background:#0e151d;border-radius:25px 25px 0 0;border:1px solid var(--line);padding:20px 17px calc(24px + env(safe-area-inset-bottom))}.sheetHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.sheetHead h2{font-size:19px;margin:0}.x{width:38px;height:38px;border-radius:50%;background:var(--soft);color:white}.on{position:fixed;inset:0;background:#090d12;z-index:50;padding:calc(28px + env(safe-area-inset-top)) 18px 40px;overflow:auto}.on.hide{display:none}.onw{max-width:600px;margin:auto}.on h1{font-size:30px;line-height:1.1}.step{display:none}.step.active{display:block}.question{font-size:20px;font-weight:850;margin:18px 0 12px}.empty{text-align:center;padding:22px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}@media(max-width:460px){.big{font-size:32px}.quick{grid-template-columns:repeat(3,1fr)}.q{font-size:13px}.bill{grid-template-columns:1fr 95px 34px}}</style></head><body><div class="app"><header class="top"><div><div class="tiny">Seu dinheiro sem complicação</div><h1>Meu Dinheiro</h1></div><div class="month" id="month"></div></header><section id="home" class="panel active"><div class="hero"><div class="label">Previsão para o fim do mês</div><div class="big" id="projection">R$ 0</div><div class="sub" id="projectionText">Me diga sua renda e suas contas para começar.</div></div><div class="sec"><h2>Hoje</h2><div class="grid2"><div class="card"><div class="label">Meta de Uber</div><div class="num blue" id="target">R$ 0</div><div class="hint" id="targetHint"></div></div><div class="card"><div class="label">Feito hoje</div><div class="num" id="today">R$ 0</div><div class="hint" id="todayHint"></div></div></div></div><div class="sec"><div class="advisor"><b>O que eu faria agora</b><span id="advice">Configure seu mês. Eu faço as contas e vou ajustando conforme você lança seus ganhos e gastos.</span></div></div><div class="sec"><h2>Seu mês</h2><div class="rows"><div class="row"><span>Entradas</span><b class="ok" id="income">R$ 0</b></div><div class="row"><span>Gastos</span><b class="bad" id="expenses">R$ 0</b></div><div class="row"><span>Separar do Uber</span><b class="warn" id="reserve">R$ 0</b></div></div></div><div class="sec"><h2>Lançar rápido</h2><div class="quick"><button class="q" onclick="openTxn('uber')">+ Uber<small>corridas</small></button><button class="q" onclick="openTxn('expense')">+ Gasto<small>saída</small></button><button class="q" onclick="openTxn('income')">+ Receita<small>extra</small></button></div></div></section><section id="moves" class="panel"><div class="notice" id="summary"></div><div class="sec"><div class="list" id="list"></div></div></section><section id="plan" class="panel"><div class="sec" style="margin-top:0"><h2>1. Sua renda fixa</h2><div class="box form"><div class="field"><label>Quanto entra garantido no mês?</label><input id="salary" type="number" inputmode="decimal" placeholder="Ex.: 2600"></div></div></div><div class="sec"><h2>2. Contas fixas</h2><div class="box form"><div id="bills"></div><button class="secondary" onclick="addBill()">+ Adicionar conta</button></div></div><div class="sec"><h2>3. Seu plano</h2><div class="box form"><div class="field"><label>Quanto quer que sobre no fim do mês?</label><input id="goal" type="number" inputmode="decimal" placeholder="Ex.: 500"></div><div class="field"><label>Quantos dias pretende fazer Uber no mês?</label><input id="days" type="number" inputmode="numeric" placeholder="Ex.: 12"></div><div class="field"><label>% do Uber para combustível/manutenção</label><input id="pct" type="number" inputmode="decimal" placeholder="Ex.: 25"></div><div class="notice" id="preview"></div><div style="height:8px"></div><button class="primary" onclick="savePlan()">Salvar planejamento</button></div></div></section></div><nav class="tabs"><button class="tab active" data-p="home">Início</button><button class="tab" data-p="moves">Lançamentos</button><button class="tab" data-p="plan">Planejamento</button></nav><div class="modal" id="modal"><div class="sheet"><div class="sheetHead"><h2 id="mtitle">Novo lançamento</h2><button class="x" onclick="closeTxn()">×</button></div><div class="field"><label>Tipo</label><select id="type"><option value="uber">Ganho Uber</option><option value="income">Outra receita</option><option value="expense">Gasto</option></select></div><div class="field"><label>Valor</label><input id="amount" type="number" inputmode="decimal" placeholder="R$ 0,00"></div><div class="field"><label>Descrição</label><input id="desc" placeholder="Ex.: gasolina, mercado, Uber"></div><div class="field"><label>Data</label><input id="date" type="date"></div><button class="primary" onclick="addTxn()">Salvar</button></div></div><div class="on" id="on"><div class="onw"><div class="tiny">Configuração inicial</div><h1>Me passa 3 coisas.<br>Eu organizo o resto.</h1><div class="sub">Você informa o que entra, o que sai e sua meta. Depois o app recalcula tudo sozinho.</div><div class="step active" data-s="0"><div class="question">Quanto entra garantido por mês?</div><input id="osalary" type="number" inputmode="decimal" placeholder="Ex.: 2600"><div style="height:12px"></div><button class="primary" onclick="nextStep()">Continuar</button></div><div class="step" data-s="1"><div class="question">Quais contas você paga todo mês?</div><div id="obills"></div><button class="secondary" onclick="addOBill()">+ Adicionar conta</button><div style="height:10px"></div><button class="primary" onclick="nextStep()">Continuar</button></div><div class="step" data-s="2"><div class="question">Qual é seu objetivo?</div><div class="field"><label>Quero terminar o mês com pelo menos</label><input id="ogoal" type="number" inputmode="decimal" placeholder="Ex.: 500"></div><div class="field"><label>Dias de Uber no mês</label><input id="odays" type="number" inputmode="numeric" placeholder="Ex.: 12"></div><div class="field"><label>% para combustível/manutenção</label><input id="opct" type="number" inputmode="decimal" value="25"></div><button class="primary" onclick="finish()">Montar meu plano</button></div></div></div><script>const K='meuDinheiro_v3',D={setup:false,salary:0,bills:[],goal:0,days:12,pct:25,tx:[]};let S=(()=>{try{return {...D,...JSON.parse(localStorage.getItem(K)||'{}')}}catch(e){return {...D}}})(),st=0;const n=v=>Math.max(0,Number(v)||0),money=v=>n(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}),dk=(d=new Date())=>{let y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),x=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${x}`},mk=()=>dk().slice(0,7),mt=()=>S.tx.filter(t=>t.date.startsWith(mk())),fixed=()=>S.bills.reduce((a,b)=>a+n(b.amount),0);function calc(){let uber=0,extra=0,varx=0,tx=mt();tx.forEach(t=>t.type==='uber'?uber+=n(t.amount):t.type==='income'?extra+=n(t.amount):varx+=n(t.amount));let f=fixed(),exp=f+varx,p=Math.min(.9,n(S.pct)/100),res=uber*p,dates=[...new Set(tx.filter(t=>t.type==='uber').map(t=>t.date))],done=dates.length,left=Math.max(1,n(S.days)-done),need=Math.max(0,(n(S.goal)+exp-n(S.salary)-extra)/(1-p)),remain=Math.max(0,need-uber),target=remain/left,avg=done?uber/done:0,projUber=done?uber+avg*left:need,proj=n(S.salary)+extra+projUber-exp-projUber*p,income=n(S.salary)+extra+uber;return{uber,extra,varx,f,exp,res,done,left,need,remain,target,avg,proj,income}}function save(){localStorage.setItem(K,JSON.stringify(S));render()}function render(){let c=calc(),now=new Date(),tod=mt().filter(t=>t.type==='uber'&&t.date===dk()).reduce((a,b)=>a+n(b.amount),0);month.textContent=now.toLocaleDateString('pt-BR',{month:'short',year:'numeric'}).replace('.','');projection.textContent=money(Math.abs(c.proj));projection.className='big '+(c.proj>=0?'ok':'bad');projectionText.textContent=c.proj>=0?'Se você mantiver esse ritmo, esse valor deve sobrar depois das contas e da reserva do Uber.':'Nesse ritmo deve faltar esse valor. A meta diária abaixo já foi ajustada.';target.textContent=money(c.target);targetHint.textContent=c.remain?`Faltam ${money(c.remain)} de Uber para fechar seu plano.`:'O necessário para sua meta já foi coberto.';today.textContent=money(tod);todayHint.textContent=c.target?`${Math.round(tod/c.target*100)}% da meta de hoje`:'meta do mês coberta';income.textContent=money(c.income);expenses.textContent=money(c.exp);reserve.textContent=money(c.res);advice.textContent=!S.setup?'Configure seu mês. Eu faço as contas e vou ajustando conforme você lança seus ganhos e gastos.':c.remain<=0?'Boa: sua meta do mês já está coberta. O que entrar além disso aumenta sua sobra.':tod>=c.target&&c.target>0?`Meta de hoje batida. Você fez ${money(tod-c.target)} acima do necessário.`:`Para terminar o mês com ${money(S.goal)}, busque ${money(c.target)} por dia nos ${Math.ceil(c.left)} dias de Uber restantes.`;summary.textContent=`Neste mês: ${money(c.income)} entrou, ${money(c.exp)} saiu e ${money(c.res)} está separado para custos do Uber.`;renderList();fillPlan()}function renderList(){let a=[...mt()].sort((x,y)=>y.date.localeCompare(x.date)||y.id-x.id);list.innerHTML=a.length?a.map(t=>`<div class="item"><div><b>${esc(t.desc||name(t.type))}</b><small>${new Date(t.date+'T12:00:00').toLocaleDateString('pt-BR')} · ${name(t.type)}</small></div><div style="text-align:right"><b class="${t.type==='expense'?'bad':'ok'}">${t.type==='expense'?'-':'+'}${money(t.amount)}</b><br><button class="tiny" style="background:none;color:#748399" onclick="del(${t.id})">excluir</button></div></div>`).join(''):'<div class="empty">Nenhum lançamento neste mês.</div>'}function name(t){return t==='uber'?'Uber':t==='income'?'Receita':'Gasto'}function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function openTxn(t){type.value=t;amount.value='';desc.value='';date.value=dk();mtitle.textContent=t==='uber'?'Adicionar ganho de Uber':t==='expense'?'Adicionar gasto':'Adicionar receita';modal.classList.add('open')}function closeTxn(){modal.classList.remove('open')}function addTxn(){let a=n(amount.value);if(!a||!date.value)return alert('Informe o valor e a data.');S.tx.push({id:Date.now(),type:type.value,amount:a,desc:desc.value.trim()||name(type.value),date:date.value});save();closeTxn()}function del(id){if(confirm('Excluir este lançamento?')){S.tx=S.tx.filter(t=>t.id!==id);save()}}function fillPlan(){if(document.activeElement?.tagName==='INPUT')return;salary.value=S.salary||'';goal.value=S.goal||'';days.value=S.days||'';pct.value=S.pct??25;bills.innerHTML=S.bills.map((b,i)=>`<div class="bill"><input value="${esc(b.name)}" oninput="S.bills[${i}].name=this.value" placeholder="Conta"><input type="number" value="${b.amount}" oninput="S.bills[${i}].amount=n(this.value)" placeholder="Valor"><button class="del" onclick="S.bills.splice(${i},1);fillPlan()">×</button></div>`).join('')||'<div class="tiny" style="margin-bottom:10px">Nenhuma conta fixa.</div>';preview.textContent=`Com esses números, sua meta atual é ${money(calc().target)} por dia de Uber nos dias restantes.`}function addBill(){S.bills.push({name:'',amount:0});fillPlan()}function savePlan(){S.salary=n(salary.value);S.goal=n(goal.value);S.days=Math.max(1,n(days.value)||1);S.pct=Math.min(90,n(pct.value));S.setup=true;save();go('home')}function addOBill(){let r=document.createElement('div');r.className='bill';r.innerHTML='<input placeholder="Ex.: aluguel"><input type="number" inputmode="decimal" placeholder="Valor"><button class="del" onclick="this.parentElement.remove()">×</button>';obills.appendChild(r)}function nextStep(){if(st===0){if(!n(osalary.value))return alert('Informe sua renda mensal.');S.salary=n(osalary.value);addOBill()}if(st===1)S.bills=[...obills.querySelectorAll('.bill')].map(r=>({name:r.children[0].value.trim()||'Conta',amount:n(r.children[1].value)})).filter(b=>b.amount);st++;document.querySelectorAll('.step').forEach((e,i)=>e.classList.toggle('active',i===st))}function finish(){S.goal=n(ogoal.value);S.days=Math.max(1,n(odays.value)||12);S.pct=Math.min(90,n(opct.value)||25);S.setup=true;save();on.classList.add('hide')}function go(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.p===id));scrollTo({top:0,behavior:'smooth'})}document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>go(t.dataset.p));modal.onclick=e=>{if(e.target===modal)closeTxn()};if(S.setup)on.classList.add('hide');render();</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#091018">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Meu Dinheiro">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png">
+<title>Meu Dinheiro</title>
+<style>
+:root{--bg:#091018;--card:#111a24;--card2:#172330;--line:#263544;--text:#f7f9fc;--muted:#91a0b3;--blue:#63a6ff;--green:#2dd4bf;--red:#fb7185;--yellow:#fbbf24}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}body{padding-bottom:92px}.app{max-width:680px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 15px 24px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:3px 0 18px}.brand{display:flex;align-items:center;gap:11px}.logo{width:46px;height:46px;border-radius:14px;display:block;box-shadow:0 10px 24px #0006}.brand small,.muted{color:var(--muted)}.brand h1{font-size:22px;margin:1px 0}.pill{font-size:12px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;color:#dbeafe;background:#101923}
+.panel{display:none}.panel.active{display:block}.hero,.card,.box{background:var(--card);border:1px solid var(--line);border-radius:21px}.hero{padding:19px;background:linear-gradient(145deg,#13202d,#0e1721)}.hero .label,.label{font-size:12px;color:var(--muted)}.heroValue{font-size:38px;font-weight:900;letter-spacing:-1.4px;margin:5px 0}.heroText{font-size:14px;line-height:1.5;color:#cbd5e1}.ok{color:var(--green)}.bad{color:var(--red)}.blue{color:var(--blue)}.warn{color:var(--yellow)}
+.sec{margin-top:18px}.sec h2{font-size:16px;margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.card{padding:15px}.value{font-size:24px;font-weight:900;margin-top:4px}.hint{font-size:12px;color:var(--muted);line-height:1.45;margin-top:5px}.advisor{padding:15px;border:1px solid #274457;background:#102534;border-radius:18px;font-size:14px;line-height:1.5}.advisor b{display:block;margin-bottom:4px}
+.rows{display:flex;flex-direction:column;gap:8px}.row{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-radius:15px;background:var(--card);border:1px solid var(--line)}.row span{font-size:13px;color:var(--muted)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}button{appearance:none;border:0;font:inherit;cursor:pointer}.quick button,.secondary{background:var(--card2);border:1px solid var(--line);color:var(--text)}.quick button{min-height:72px;border-radius:17px;font-weight:850}.quick small{display:block;color:var(--muted);font-weight:500;margin-top:4px}.primary,.secondary{width:100%;padding:14px;border-radius:14px;font-weight:850}.primary{background:linear-gradient(135deg,var(--blue),var(--green));color:#061019}
+.form{padding:15px}.field{margin-bottom:12px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}input,select{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#0a121a;color:#fff;font-size:16px;outline:none}.bill{display:grid;grid-template-columns:1fr 108px 38px;gap:7px;margin-bottom:8px}.bill input{padding:10px;font-size:14px}.remove{border-radius:11px;background:#2b151b;color:#fecdd3;border:1px solid #633141}.notice{padding:13px;border:1px dashed var(--line);border-radius:14px;color:#cbd5e1;font-size:13px;line-height:1.45;background:#0c151e}
+.list{display:flex;flex-direction:column;gap:8px}.item{display:flex;justify-content:space-between;gap:10px;padding:13px;border:1px solid var(--line);border-radius:15px;background:var(--card)}.item b{display:block;font-size:14px}.item small{color:var(--muted)}.empty{text-align:center;padding:24px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));width:min(660px,calc(100% - 18px));display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:7px;border-radius:19px;border:1px solid var(--line);background:#0d151eee;backdrop-filter:blur(18px);z-index:30}.tab{padding:11px;border-radius:13px;background:transparent;color:var(--muted);font-size:12px;font-weight:800}.tab.active{background:#1a2836;color:white}
+.modal{display:none;position:fixed;inset:0;background:#000b;align-items:flex-end;justify-content:center;z-index:50}.modal.open{display:flex}.sheet{width:min(680px,100%);background:#0e1720;border-radius:24px 24px 0 0;border:1px solid var(--line);padding:19px 16px calc(23px + env(safe-area-inset-bottom))}.sheetHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.sheetHead h2{font-size:19px;margin:0}.close{width:38px;height:38px;border-radius:50%;background:var(--card2);color:white}
+.setup{padding:17px}.setupHead{display:flex;gap:10px;align-items:center;margin-bottom:12px}.setupHead img{width:42px;height:42px;border-radius:13px}
+@media(max-width:460px){.heroValue{font-size:33px}.grid{grid-template-columns:1fr 1fr}.quick button{font-size:13px}.bill{grid-template-columns:1fr 94px 36px}.brand h1{font-size:20px}.logo{width:42px;height:42px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><img class="logo" src="./icon.svg" alt="Meu Dinheiro"><div><small>Seu dinheiro sem complicação</small><h1>Meu Dinheiro</h1></div></div>
+  <div class="pill" id="month"></div>
+</header>
+
+<section id="home" class="panel active">
+  <div class="hero">
+    <div class="label">Previsão para o fim do mês</div>
+    <div class="heroValue" id="projection">R$ 0</div>
+    <div class="heroText" id="projectionText">Cadastre sua renda e suas contas. Eu faço o resto.</div>
+  </div>
+
+  <div class="sec" id="setupCard">
+    <div class="box setup">
+      <div class="setupHead"><img src="./icon.svg" alt=""><div><b>Vamos organizar seu mês</b><div class="hint">Você me fala o que entra e o que sai.</div></div></div>
+      <button class="primary" onclick="go('plan')">Configurar agora</button>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Hoje</h2><div class="grid">
+    <div class="card"><div class="label">Meta de Uber</div><div class="value blue" id="target">R$ 0</div><div class="hint" id="targetHint">Ajustada ao seu mês.</div></div>
+    <div class="card"><div class="label">Feito hoje</div><div class="value" id="today">R$ 0</div><div class="hint" id="todayHint">0% da meta</div></div>
+  </div></div>
+
+  <div class="sec"><div class="advisor"><b>O que eu faria agora</b><span id="advice">Configure seu planejamento. Depois eu vou recalculando tudo conforme você lança seus valores.</span></div></div>
+
+  <div class="sec"><h2>Seu mês</h2><div class="rows">
+    <div class="row"><span>Entradas</span><b class="ok" id="income">R$ 0</b></div>
+    <div class="row"><span>Gastos</span><b class="bad" id="expenses">R$ 0</b></div>
+    <div class="row"><span>Separar do Uber</span><b class="warn" id="reserve">R$ 0</b></div>
+    <div class="row"><span>Uber que ainda falta</span><b class="blue" id="remaining">R$ 0</b></div>
+  </div></div>
+
+  <div class="sec"><h2>Lançar rápido</h2><div class="quick">
+    <button onclick="openTxn('uber')">+ Uber<small>corridas</small></button>
+    <button onclick="openTxn('expense')">+ Gasto<small>saída</small></button>
+    <button onclick="openTxn('income')">+ Receita<small>extra</small></button>
+  </div></div>
+</section>
+
+<section id="moves" class="panel">
+  <div class="notice" id="summary">Seus lançamentos deste mês aparecem aqui.</div>
+  <div class="sec"><div class="list" id="list"></div></div>
+</section>
+
+<section id="plan" class="panel">
+  <div class="box form">
+    <div class="field"><label>Quanto entra garantido no mês?</label><input id="salary" type="number" inputmode="decimal" placeholder="Ex.: 2600"></div>
+    <div class="field"><label>Quanto quer que sobre no fim do mês?</label><input id="goal" type="number" inputmode="decimal" placeholder="Ex.: 500"></div>
+    <div class="grid">
+      <div class="field"><label>Dias de Uber no mês</label><input id="days" type="number" inputmode="numeric" placeholder="Ex.: 12"></div>
+      <div class="field"><label>% para combustível/manutenção</label><input id="pct" type="number" inputmode="decimal" placeholder="Ex.: 25"></div>
+    </div>
+    <div class="notice" id="preview">Eu vou transformar esses números em uma meta diária.</div>
+  </div>
+
+  <div class="sec"><h2>Contas fixas</h2><div class="box form">
+    <div id="bills"></div>
+    <button class="secondary" onclick="addBill()">+ Adicionar conta</button>
+  </div></div>
+
+  <div class="sec"><button class="primary" onclick="savePlan()">Salvar planejamento</button></div>
+</section>
+</div>
+
+<nav class="tabs">
+  <button class="tab active" data-p="home">Início</button>
+  <button class="tab" data-p="moves">Lançamentos</button>
+  <button class="tab" data-p="plan">Planejamento</button>
+</nav>
+
+<div class="modal" id="modal"><div class="sheet">
+  <div class="sheetHead"><h2 id="mtitle">Novo lançamento</h2><button class="close" onclick="closeTxn()">×</button></div>
+  <div class="field"><label>Tipo</label><select id="type"><option value="uber">Ganho Uber</option><option value="income">Outra receita</option><option value="expense">Gasto</option></select></div>
+  <div class="field"><label>Valor</label><input id="amount" type="number" inputmode="decimal" placeholder="R$ 0,00"></div>
+  <div class="field"><label>Descrição</label><input id="desc" placeholder="Ex.: gasolina, mercado, Uber"></div>
+  <div class="field"><label>Data</label><input id="date" type="date"></div>
+  <button class="primary" onclick="addTxn()">Salvar</button>
+</div></div>
+
+<script>
+const K='meuDinheiro_v3',D={setup:false,salary:0,bills:[],goal:0,days:12,pct:25,tx:[]};
+let S=load();
+function load(){try{return {...D,...JSON.parse(localStorage.getItem(K)||'{}')}}catch(e){return {...D}}}
+const $=id=>document.getElementById(id),n=v=>Math.max(0,Number(v)||0),money=v=>n(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const dayKey=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const monthKey=()=>dayKey().slice(0,7),monthTx=()=>S.tx.filter(t=>String(t.date).startsWith(monthKey())),fixed=()=>S.bills.reduce((a,b)=>a+n(b.amount),0);
+function stats(){
+  let uber=0,extra=0,varx=0,tx=monthTx();
+  tx.forEach(t=>t.type==='uber'?uber+=n(t.amount):t.type==='income'?extra+=n(t.amount):varx+=n(t.amount));
+  const f=fixed(),exp=f+varx,p=Math.min(.9,n(S.pct)/100),res=uber*p,dates=[...new Set(tx.filter(t=>t.type==='uber'&&n(t.amount)>0).map(t=>t.date))],done=dates.length,left=Math.max(1,n(S.days)-done);
+  const need=Math.max(0,(n(S.goal)+exp-n(S.salary)-extra)/(1-p)),remain=Math.max(0,need-uber),target=remain/left,avg=done?uber/done:0,projectedUber=done?uber+avg*left:need,proj=n(S.salary)+extra+projectedUber-exp-projectedUber*p,income=n(S.salary)+extra+uber;
+  return{uber,extra,varx,f,exp,res,done,left,need,remain,target,avg,proj,income};
+}
+function save(){localStorage.setItem(K,JSON.stringify(S));render()}
+function render(){
+  const c=stats(),now=new Date(),tod=monthTx().filter(t=>t.type==='uber'&&t.date===dayKey()).reduce((a,b)=>a+n(b.amount),0);
+  $('month').textContent=now.toLocaleDateString('pt-BR',{month:'short',year:'numeric'}).replace('.','');
+  $('setupCard').style.display=S.setup?'none':'block';
+  $('projection').textContent=money(Math.abs(c.proj));$('projection').className='heroValue '+(c.proj>=0?'ok':'bad');
+  $('projectionText').textContent=!S.setup?'Cadastre sua renda e suas contas. Eu faço o resto.':c.proj>=0?'Mantendo esse ritmo, esse valor deve sobrar depois das contas e da reserva do Uber.':'Nesse ritmo deve faltar esse valor. A meta diária abaixo já foi ajustada.';
+  $('target').textContent=money(c.target);$('targetHint').textContent=c.remain?`Faltam ${money(c.remain)} de Uber para fechar seu plano.`:'O necessário do mês já foi coberto.';
+  $('today').textContent=money(tod);$('todayHint').textContent=c.target?`${Math.round(tod/c.target*100)}% da meta de hoje`:'meta do mês coberta';
+  $('income').textContent=money(c.income);$('expenses').textContent=money(c.exp);$('reserve').textContent=money(c.res);$('remaining').textContent=money(c.remain);
+  $('advice').textContent=advice(c,tod);$('summary').textContent=`Neste mês: ${money(c.income)} entrou, ${money(c.exp)} saiu e ${money(c.res)} está reservado para custos do Uber.`;
+  renderList();fillPlan();
+}
+function advice(c,tod){
+  if(!S.setup)return 'Vá em Planejamento, coloque sua renda e suas contas. Depois é só registrar Uber e gastos.';
+  if(c.remain<=0)return 'Sua meta financeira do mês já está coberta. O que entrar além disso aumenta sua sobra.';
+  if(tod>=c.target&&c.target>0)return `Meta de hoje batida. Você fez ${money(tod-c.target)} acima do necessário hoje.`;
+  if(c.target>0)return `Para terminar o mês com ${money(S.goal)} sobrando, busque ${money(c.target)} por dia nos ${Math.ceil(c.left)} dias de Uber restantes.`;
+  return 'Seu mês está equilibrado. Continue registrando o que entra e o que sai.';
+}
+function renderList(){
+  const a=[...monthTx()].sort((x,y)=>y.date.localeCompare(x.date)||y.id-x.id);
+  $('list').innerHTML=a.length?a.map(t=>`<div class="item"><div><b>${esc(t.desc||name(t.type))}</b><small>${new Date(t.date+'T12:00:00').toLocaleDateString('pt-BR')} · ${name(t.type)}</small></div><div style="text-align:right"><b class="${t.type==='expense'?'bad':'ok'}">${t.type==='expense'?'-':'+'}${money(t.amount)}</b><br><button class="muted" style="background:none" onclick="delTxn(${t.id})">excluir</button></div></div>`).join(''):'<div class="empty">Nenhum lançamento neste mês.</div>';
+}
+function name(t){return t==='uber'?'Uber':t==='income'?'Receita':'Gasto'}function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openTxn(t){$('type').value=t;$('amount').value='';$('desc').value='';$('date').value=dayKey();$('mtitle').textContent=t==='uber'?'Adicionar ganho de Uber':t==='expense'?'Adicionar gasto':'Adicionar receita';$('modal').classList.add('open');setTimeout(()=>$('amount').focus(),100)}
+function closeTxn(){$('modal').classList.remove('open')}
+function addTxn(){const a=n($('amount').value),d=$('date').value;if(!a||!d)return alert('Informe o valor e a data.');S.tx.push({id:Date.now(),type:$('type').value,amount:a,desc:$('desc').value.trim()||name($('type').value),date:d});save();closeTxn()}
+function delTxn(id){if(confirm('Excluir este lançamento?')){S.tx=S.tx.filter(t=>t.id!==id);save()}}
+function fillPlan(){
+  if(document.activeElement?.tagName==='INPUT')return;
+  $('salary').value=S.salary||'';$('goal').value=S.goal||'';$('days').value=S.days||'';$('pct').value=S.pct??25;
+  $('bills').innerHTML=S.bills.map((b,i)=>`<div class="bill"><input value="${esc(b.name)}" placeholder="Conta" oninput="S.bills[${i}].name=this.value"><input type="number" inputmode="decimal" value="${b.amount}" placeholder="Valor" oninput="S.bills[${i}].amount=n(this.value)"><button class="remove" onclick="removeBill(${i})">×</button></div>`).join('')||'<div class="hint" style="margin-bottom:10px">Nenhuma conta fixa ainda.</div>';
+  $('preview').textContent=`Com esses números, sua meta atual é ${money(stats().target)} por dia de Uber nos dias restantes.`;
+}
+function addBill(){S.bills.push({name:'',amount:0});fillPlan()}function removeBill(i){S.bills.splice(i,1);fillPlan()}
+function savePlan(){S.salary=n($('salary').value);S.goal=n($('goal').value);S.days=Math.max(1,n($('days').value)||1);S.pct=Math.min(90,n($('pct').value));S.bills=S.bills.filter(b=>n(b.amount)>0);S.setup=true;save();go('home')}
+function go(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.p===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='plan')fillPlan()}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>go(t.dataset.p));$('modal').onclick=e=>{if(e.target===$('modal'))closeTxn()};render();
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+</script>
+</body></html>
