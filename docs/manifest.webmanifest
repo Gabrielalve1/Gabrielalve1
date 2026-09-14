@@ -1,14 +1,1 @@
-{
-  "name": "Meu Dinheiro",
-  "short_name": "Meu Dinheiro",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#090d12",
-  "theme_color": "#090d12",
-  "description": "Organizador financeiro pessoal simples com metas de Uber e planejamento mensal.",
-  "icons": [
-    {"src":"./icons/icon-180.png","sizes":"180x180","type":"image/png","purpose":"any"},
-    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
-  ]
-}
+{"name":"Meu Dinheiro","short_name":"Meu Dinheiro","start_url":"./","scope":"./","display":"standalone","background_color":"#0a0f14","theme_color":"#0a0f14","description":"Organizador financeiro pessoal com metas de Uber, contas, projeção mensal e assistente simples.","icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"},{"src":"./icons/icon-180.png","sizes":"180x180","type":"image/png","purpose":"any"}]}
