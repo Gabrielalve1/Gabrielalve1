@@ -1,4 +1,4 @@
-name: Publicar Meu Dinheiro
+name: Validar Meu Dinheiro
 on:
   push:
     branches: [main]
@@ -6,33 +6,18 @@ on:
       - 'financeiro/**'
       - '.github/workflows/pages-financeiro.yml'
   workflow_dispatch:
+# GitHub Pages already publishes main at the repository root. A second
+# deployment of only financeiro/ overwrote that site and broke /financeiro/.
+# Keep the built-in Pages publication as the sole deployment pipeline.
 permissions:
   contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Preparar ícones do app
+      - name: Validar scripts do diário
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq librsvg2-bin
-          mkdir -p financeiro/icons
-          rsvg-convert -w 180 -h 180 financeiro/icon.svg -o financeiro/icons/icon-180.png
-          rsvg-convert -w 192 -h 192 financeiro/icon.svg -o financeiro/icons/icon-192.png
-          rsvg-convert -w 512 -h 512 financeiro/icon.svg -o financeiro/icons/icon-512.png
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: './financeiro'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          node --check financeiro/engine.js
+          node --check financeiro/app.js
+          node --check financeiro/service-worker.js
