@@ -1,6 +1,6 @@
 'use strict';
-const CACHE='meu-dinheiro-diario-v6-1';
-const FILES=['./','./index.html','./style.css?v=6','./engine.js?v=6','./app.js?v=6','./icon.svg','./manifest.webmanifest'];
+const CACHE='meu-dinheiro-diario-v7-1';
+const FILES=['./','./index.html','./style.css?v=7','./engine.js?v=7','./app.js?v=7','./icon.svg','./manifest.webmanifest'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('meu-dinheiro')&&k!==CACHE).map(k=>caches.delete(k))))])));
 self.addEventListener('fetch',event=>{
