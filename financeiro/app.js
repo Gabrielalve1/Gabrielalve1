@@ -1,10 +1,10 @@
 'use strict';
-const F=window.Finance,KEY='meuDinheiro_v6',PREVIOUS=KEY+'_previous',$=id=>document.getElementById(id);
+const F=window.Finance,KEY='meuDinheiro_v6',PREVIOUS=KEY+'_previous',CLOUD_TOKEN_KEY='meuDinheiro_cloudToken_v1',CLOUD_ENDPOINT='https://eypjolevwbzrbhqwocwi.supabase.co/functions/v1/diary-sync',$=id=>document.getElementById(id);
 const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}),number=n=>Number(n||0).toLocaleString('pt-BR',{maximumFractionDigits:1});
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const monthName=m=>new Date(m+'-01T12:00:00').toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
 const pretty=d=>new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',weekday:'short'});
-let today=F.dateKey(),selected=today.slice(0,7),tab='hoje',metricPeriod='month',S,lastStored=null,readOnly=false,toastTimer,editingDate=null,planBills=[];
+let today=F.dateKey(),selected=today.slice(0,7),tab='hoje',metricPeriod='month',S,lastStored=null,readOnly=false,toastTimer,editingDate=null,planBills=[],cloudToken=null,cloudMember='',cloudReady=false,cloudSaving=false,pendingCloudState=null;
 function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,5000);}
 function warning(text){$('critical').textContent=text;$('critical').hidden=false;}
 function boot(){
@@ -16,13 +16,13 @@ function boot(){
  $('month').value=selected;render();
 }
 function snapshot(state,m){state.months[m]??=F.plan(state,m,today);return state.months[m];}
-function commit(change,message='Salvo neste aparelho.',recover=false){
+function commit(change,message='Salvo.',recover=false){
  if(readOnly&&!recover){toast('A memória está indisponível. Nenhum dado foi salvo.');return false;}
  try{
   if(!recover&&localStorage.getItem(KEY)!==lastStored){warning('O diário mudou em outra aba. Recarregue a página antes de salvar para não substituir informações mais novas.');return false;}
   const next=F.copy(S);change(next);F.validate(next);next.revision=(Number(S.revision)||0)+1;next.updatedAt=new Date().toISOString();const text=JSON.stringify(next);
   if(lastStored){try{localStorage.setItem(PREVIOUS,lastStored);}catch(e){/* Main write below determines success. */}}
-  localStorage.setItem(KEY,text);S=next;lastStored=text;readOnly=false;render();toast(message);return true;
+  localStorage.setItem(KEY,text);S=next;lastStored=text;readOnly=false;render();toast(message);queueCloudSave(next);return true;
  }catch(e){warning('Não foi possível salvar: '+e.message+'. Mantenha esta página aberta e baixe uma cópia dos seus registros.');return false;}
 }
 function go(next){tab=next;document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!==tab);document.querySelectorAll('[data-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.tab===tab);b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false');});if(tab==='plano')fillPlan();window.scrollTo({top:0,behavior:'auto'});}
@@ -30,7 +30,7 @@ function signed(id,v){$(id).textContent=money(v);$(id).classList.toggle('negativ
 function render(){
  const c=F.calculate(S,selected,today),isNow=selected===today.slice(0,7),d=S.days[today];
  $('pageTitle').textContent=isNow?'Seu Uber, organizado.':monthName(selected);
- $('saveStatus').textContent=readOnly?'Memória indisponível':S.updatedAt?'● Salvo neste aparelho':'● Memória neste aparelho';
+ $('saveStatus').textContent=readOnly?'Memória indisponível':cloudToken?(cloudReady?'● Sincronizado online':'● Conectando…'):S.updatedAt?'● Salvo neste aparelho':'● Memória neste aparelho';
  $('migration').hidden=!S.migrationNote;$('migration').textContent=S.migrationNote||'';
  $('onboarding').hidden=c.p.configured;
  const closed=d?.status==='closed',rest=d?.status==='rest',hasSlot=c.remaining.includes(today);
@@ -96,7 +96,7 @@ function renderMoney(c){
  $('billList').innerHTML=c.p.bills.length?c.p.bills.map(b=>'<div class="ledger"><label><input type="checkbox" data-bill="'+esc(b.id)+'" '+(b.paid?'checked':'')+'><span>'+esc(b.name)+'<small>'+(b.paid?'Pago':'A pagar · valor já separado')+'</small></span></label><b>'+money(b.amount)+'</b></div>').join(''):'<div class="empty">Cadastre suas contas no plano do mês.</div>';
  const rows=S.personal.filter(t=>t.date.startsWith(selected)).sort((a,b)=>b.date.localeCompare(a.date));$('personalList').innerHTML=rows.length?rows.map(t=>'<div class="ledger"><span>'+esc(t.name)+'<small>'+pretty(t.date)+' · '+(t.kind==='income'?'Entrada':'Gasto')+'</small></span><div><b class="'+(t.kind==='income'?'positive':'negative')+'">'+(t.kind==='income'?'+':'−')+money(t.amount)+'</b><button class="delete" data-delete-personal="'+esc(t.id)+'" aria-label="Excluir '+esc(t.name)+'">×</button></div></div>').join(''):'<div class="empty">Seus gastos avulsos e outras entradas ficam aqui.</div>';
 }
-function renderMemory(){const count=Object.keys(S.days).length,months=new Set([...Object.keys(S.months),...Object.keys(S.days).map(d=>d.slice(0,7))]);$('memoryCount').textContent=count+' dias e '+months.size+' meses na sua memória.';try{$('backupInfo').textContent=localStorage.getItem(KEY+'_backupAt')?'Última cópia baixada: '+new Date(localStorage.getItem(KEY+'_backupAt')).toLocaleString('pt-BR'):'Você ainda não baixou uma cópia desta memória.';}catch(e){}$('footerStatus').textContent='Memória local · versão 6'+(S.updatedAt?' · último salvamento '+new Date(S.updatedAt).toLocaleString('pt-BR'):'');}
+function renderMemory(){const count=Object.keys(S.days).length,months=new Set([...Object.keys(S.months),...Object.keys(S.days).map(d=>d.slice(0,7))]);$('memoryCount').textContent=count+' dias e '+months.size+' meses na sua memória.';try{$('backupInfo').textContent=localStorage.getItem(KEY+'_backupAt')?'Última cópia baixada: '+new Date(localStorage.getItem(KEY+'_backupAt')).toLocaleString('pt-BR'):'Você ainda não baixou uma cópia desta memória.';}catch(e){}$('footerStatus').textContent=(cloudReady?'Memória online de '+cloudMember:'Memória local')+' · versão 6'+(S.updatedAt?' · último salvamento '+new Date(S.updatedAt).toLocaleString('pt-BR'):'');}
 function openDay(date){
  editingDate=date;$('dayDate').value=date;loadDayForm(date);$('dayDialog').showModal();
 }
@@ -216,5 +216,30 @@ function consumeLink(){
   }
  }catch(e){warning(e.message+' Seus registros anteriores foram mantidos.');}
 }
-boot();consumeLink();window.addEventListener('hashchange',consumeLink);
+function consumeCloudLink(){
+ const match=location.hash.match(/^#cloud=([0-9a-f]{64})$/i);if(!match)return;
+ try{cloudToken=match[1].toLowerCase();localStorage.setItem(CLOUD_TOKEN_KEY,cloudToken);history.replaceState(null,'',location.pathname+location.search);}catch(e){warning('Não foi possível guardar o acesso online neste navegador.');}
+}
+async function cloudLoad(quiet=false){
+ if(!cloudToken)return;
+ try{
+  if(!quiet){cloudReady=false;render();}
+  const response=await fetch(CLOUD_ENDPOINT,{headers:{'x-diary-token':cloudToken},cache:'no-store'}),data=await response.json();
+  if(!response.ok)throw Error(data.error||'Falha ao abrir a memória online.');
+  const remote=F.validate(data.state);if(lastStored){try{localStorage.setItem(PREVIOUS,lastStored);}catch(e){}}
+  S=remote;lastStored=JSON.stringify(remote);localStorage.setItem(KEY,lastStored);cloudMember=data.member||'sua conta';cloudReady=true;readOnly=false;render();if(!quiet)toast('Memória online conectada.');
+ }catch(e){cloudReady=false;warning('A memória online não abriu: '+e.message+' Seus dados locais foram mantidos.');render();}
+}
+function queueCloudSave(state){
+ if(!cloudReady||!cloudToken)return;pendingCloudState=F.copy(state);if(!cloudSaving)flushCloudSave();
+}
+async function flushCloudSave(){
+ if(!pendingCloudState||!cloudReady)return;const state=pendingCloudState;pendingCloudState=null;cloudSaving=true;
+ try{const response=await fetch(CLOUD_ENDPOINT,{method:'PUT',headers:{'content-type':'application/json','x-diary-token':cloudToken},body:JSON.stringify({state})}),data=await response.json();if(!response.ok)throw Error(data.error||'Falha ao salvar online.');$('saveStatus').textContent='● Sincronizado online';}
+ catch(e){warning('O aparelho salvou, mas a sincronização online falhou: '+e.message);}
+ finally{cloudSaving=false;if(pendingCloudState)flushCloudSave();}
+}
+try{cloudToken=localStorage.getItem(CLOUD_TOKEN_KEY);}catch(e){}
+consumeCloudLink();
+boot();consumeLink();cloudLoad();window.addEventListener('hashchange',()=>{consumeCloudLink();consumeLink();if(cloudToken&&!cloudReady)cloudLoad();});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(()=>{/* Online diary remains available. */});
